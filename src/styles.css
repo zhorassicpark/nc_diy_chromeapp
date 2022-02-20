@@ -1,3 +1,49 @@
 body {
-  font-family: sans-serif;
+  font-family: Arial, Copperplate, Helvetica, sans-serif;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.item-center {
+  align-items: center;
+}
+
+.left-top {
+  position: fixed;
+  top: 100px;
+  left: 100px;
+}
+
+.hidden {
+  display: none;
+}
+
+.white {
+  color: azure;
+}
+
+.background-black {
+  background-color: black;
+}
+
+#greetings {
+  /*font-style: italic;*/
+  font-size: 2em;
+  font-family: "serif";
+}
+
+.right-middle {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+}
+
+.bold {
+  font-style: bold;
 }

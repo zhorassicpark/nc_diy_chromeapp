@@ -1,16 +1,51 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+  </head>
 
-<head>
-	<title>Parcel Sandbox</title>
-	<meta charset="UTF-8" />
-</head>
+  <body
+    style="
+      background-image: url('');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    "
+  >
+    <div class="left-top">
+      <form id="login-form">
+        <input
+          required
+          maxlength="15"
+          type="text"
+          placeholder="Enter User Name"
+        />
+        <input type="submit" value="Log In" />
+      </form>
 
-<body>
-	<div id="app"></div>
+      <div id="greetingsdiv" class="align-center hidden">
+        <h1 id="greetings" class="white"></h1>
+        <button type="button" id="btnWP">Change WallPaper?</button>
+      </div>
+    </div>
+    <div
+      id="clock"
+      class="align-center"
+      style="color: white; font-family: fantasy;"
+    >
+      Clock Will Go Here
+    </div>
 
-	<script src="src/index.js">
-	</script>
-</body>
+    <div id="todo-list" class="right-middle">
+      <form id="todo-form">
+        <input placeholder="enter your todos..." />
+      </form>
+      <ol id="todos" class="white bold background-black">
+        TODO LIST
+      </ol>
+    </div>
 
+    <script src="src/index.js"></script>
+  </body>
 </html>
