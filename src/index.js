@@ -74,29 +74,33 @@ const todoform = document.querySelector("#todo-form");
 const todoinput = document.querySelector("#todo-form input");
 const todoList = document.querySelector("#todos");
 
-let todos = [];
+let todosli = [];
+console.log(todosli);
 
 function deleteHandler(e) {
   const li = e.target.parentElement;
+  todosli = todosli.filter((todo) => String(todo.id) !== String(li.id));
+  localStorage.setItem("todosli", JSON.stringify(todosli));
   li.remove();
 }
 
-function saveTodos() {
-  localStorage.setItem("todos", JSON.stringify(todos));
+function saveTodos(newTodo) {
+  todosli.push(newTodo);
+  console.log(todosli);
+  localStorage.setItem("todosli", JSON.stringify(todosli));
 }
 
 function addTodo(newTodo) {
   const li = document.createElement("li");
+  li.id = newTodo.id;
   const span = document.createElement("span");
   const btn = document.createElement("button");
   btn.innerText = "❌";
-  span.innerText = newTodo;
+  span.innerText = newTodo.text;
   li.appendChild(span);
   li.appendChild(btn);
   todoinput.value = "";
   todoList.appendChild(li);
-
-  todos.push(newTodo);
 
   //adding delete function to the "X" button
   btn.addEventListener("click", deleteHandler);
@@ -104,17 +108,20 @@ function addTodo(newTodo) {
 
 function handleTodoSubmit(e) {
   e.preventDefault();
-  const newTodo = todoinput.value;
+  const newTodo = {
+    id: Date.now(),
+    text: todoinput.value
+  };
   addTodo(newTodo);
-  saveTodos();
+  saveTodos(newTodo);
 }
 
 todoform.addEventListener("submit", handleTodoSubmit);
 
-if (localStorage.getItem("todos")) {
-  const savedTodos = localStorage.getItem("todos");
-  todos = JSON.parse(savedTodos);
-  todos.forEach((todo) => {
+if (localStorage.getItem("todosli")) {
+  const savedTodos = localStorage.getItem("todosli");
+  todosli = JSON.parse(savedTodos);
+  todosli.forEach((todo) => {
     addTodo(todo);
   });
 }
