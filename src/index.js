@@ -75,7 +75,7 @@ const todoinput = document.querySelector("#todo-form input");
 const todoList = document.querySelector("#todos");
 
 let todosli = [];
-console.log(todosli);
+//console.log(todosli);
 
 function deleteHandler(e) {
   const li = e.target.parentElement;
@@ -125,3 +125,26 @@ if (localStorage.getItem("todosli")) {
     addTodo(todo);
   });
 }
+
+// geolocation part
+const API_KEY = "bc93019a3efd12cc7b4e180099078094";
+function onGeoOk(position) {
+  const lat = position.coords.latitude;
+  const lng = position.coords.longitude;
+  // console.log("You live in ", lng, lat);
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${API_KEY}`;
+  // console.log(url);
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      const city = document.querySelector("#weather span:first-child");
+      const weather = document.querySelector("#weather span:last-child");
+      city.innerText = data.name + ", ";
+      weather.innerText = data.weather[0].main;
+    });
+}
+
+function onGeoError() {
+  alert("Can't find you. No weather for you.");
+}
+navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
