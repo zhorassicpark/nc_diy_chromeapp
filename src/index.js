@@ -68,6 +68,13 @@ function nameSubmit(e) {
 }
 loginform.addEventListener("submit", nameSubmit);
 
+if (localStorage.getItem("username")) {
+  const username = localStorage.getItem("username");
+  loginform.classList.add("hidden");
+  greetingsdiv.classList.remove("hidden");
+  greetings.innerText = `Hi ${username}`;
+}
+
 //todo handling part
 
 const todoform = document.querySelector("#todo-form");
