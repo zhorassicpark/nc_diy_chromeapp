@@ -1,4 +1,4 @@
-import "./styles.css";
+
 
 const bgWP = [
   `url('https://c4.wallpaperflare.com/wallpaper/186/917/313/dunkirk-dunkirk-nolan-war-wallpaper-preview.jpg')`,
